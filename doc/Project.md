@@ -30,7 +30,7 @@ The main concept of the documentation structure is to provide abstract and imple
 
 ## Abbreviations
 
-- **SoSD**: The System of Systems Description, showos an abstract view of an SoS
+- **SoSD**: The System of Systems Description, shows an abstract view of an SoS
 - **SoSDD**: The System of Systems Design Description, shows an implementation view of the SoS with its technologies and deployment views
 - **SysD**: black box System Description
 - **SysDD**: white box System Description
