@@ -13,7 +13,7 @@
   - Working code demo
   - SysML models if applicable
 
-# Requirements
+# Assignment submissions
 
 - SoSD document
 - SysD document
