@@ -4,7 +4,7 @@
 
 - Results shall be presented on Dec15, lecture 13-17 or Jan 7 lecture hours still TBD.
 - Max 15 minutes for presentation and demonstration of results
-- Presentation and demo shall include:
+- Presentation and demo shall include
 
   - SoSD documentation
   - SysDdocumentation
@@ -12,6 +12,20 @@
   - IDD documentation
   - Working code demo
   - SysML models if applicable
+
+- Preferred protocol to be used is HTTP REST of not explicit pointer
+
+- Preferred encodingis XML or JSON
+
+- No semantics preference
+
+- At least one local cloud shall be set up and running in secure mode.
+
+- Produced service to be registered in Service Registry
+
+- Consuming system to get orchestration from Orchestration system
+
+- Authorisation system to be involved for service registration and service consumption
 
 # Assignment submissions
 
