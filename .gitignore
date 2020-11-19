@@ -146,3 +146,7 @@ desktop.ini
 
 # VScode
 .vscode/
+
+# Private area
+private/
+
