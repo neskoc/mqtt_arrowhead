@@ -10,10 +10,10 @@ Arrowhead (AH) local cloud (*desktop linux*) with following 4 built in roles (se
     - Service provider: python __AH-client 0__ (*Raspberry pi*)
     - MQTT stream publisher to MQTT-broker (*Mosquitto* on  *Raspberry pi*):
         * python __AH-client 1__ as subscriber for the IoT that will be streamed to Mosquitto
-        * python __mqtt-client 1__ publishing stream to mgtt-broker,
+        * python __mqtt-client 1__ publishing stream to mqtt-broker,
     - Service consumer, (*FiPy esp32 dev board*)
         * python __AH-client 2__ for authorisation/authentication
-        * python __mgtt-client 2__ as mqtt-consumer
+        * python __mqtt-client 2__ as mqtt-consumer
 
 ### Preconfiguration
 
@@ -23,7 +23,7 @@ Arrowhead (AH) local cloud (*desktop linux*) with following 4 built in roles (se
     - Configure default streaming parameters (attributes)
 2. Manually setup mqtt-broker (Mosquitto)
     - register __mqtt-client 1__ as stream provider inclusive generated certificate 1
-    - register __mgtt-client 2__ as mqtt-consumer inclusive generated certificate 2
+    - register __mqtt-client 2__ as mqtt-consumer inclusive generated certificate 2
 
 ### Activities
 
