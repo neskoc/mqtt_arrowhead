@@ -19,7 +19,7 @@ sudo apt update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
-### Docker Compse
+### Docker Compose
 
 ```bash
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -30,6 +30,35 @@ sudo curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/com
 
 - bash completion
     `sudo curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose`
+
+## [Arrowhead Managemnt Tools](https://github.com/arrowhead-tools/mgmt-tool-js)
+
+Installation as docker image
+First pull the image from registry
+'sudo docker pull svetlint/management-tool`
+
+... then run it with `docker run` command
+
+example:
+`docker run -it -p 3000:5000 \
+--name management-tool \
+-e ARROWHEAD_SR_URL=http://arrowhead.tmit.bme.hu:8342 \
+-e ARROWHEAD_ORCH_URL=http://arrowhead.tmit.bme.hu:8340 \
+-e ARROWHEAD_GK_URL=http://arrowhead.tmit.bme.hu:8348 \
+svetlint/management-tool`
+
+`docker run -it -p 3000:5000 \
+--name management-tool \
+-e ARROWHEAD_SR_URL=localhost:8342 \
+-e ARROWHEAD_ORCH_URL=localhost:8340 \
+-e ARROWHEAD_GK_URL=localhost:8348 \
+svetlint/management-tool
+`
+
+After installation docker conteinter can be run with command:
+`docker start management-tool`
+
+Web interface on host is available as: `http://172.17.0.2:5000`
 
 ## Eclipse-Mosquitto
 
