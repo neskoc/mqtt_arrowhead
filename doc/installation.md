@@ -1,5 +1,11 @@
 # Installation and configuration
 
+## certificates
+
+After installing AH local cloude you can find __master.p12__-file at:  
+`/etc/arrowhead/master.p12`
+
+
 ## Docker
 
 ```bash
@@ -52,13 +58,16 @@ svetlint/management-tool`
 -e ARROWHEAD_SR_URL=localhost:8342 \
 -e ARROWHEAD_ORCH_URL=localhost:8340 \
 -e ARROWHEAD_GK_URL=localhost:8348 \
-svetlint/management-tool
-`
-![Post installation/build](img/management-tool-post-install.png "Profilbild")
+svetlint/management-tool`
+
+After installing/building something similar to this will be shown:
+![Post installation/build](img/management-tool-post-install.png "Managemnt tool")
+
 After installation docker container can be run with the command:
 `docker start management-tool`
 
-Web interface on host is available as: `http://172.17.0.2:5000`
+Web interface on host is available as: `http://172.17.0.2:5000`  
+![Mamagement-tool web interface](img/management-tool-web-interface.png "Mamagement-tool web interface")
 
 ## Eclipse-Mosquitto
 
@@ -66,9 +75,7 @@ Web interface on host is available as: `http://172.17.0.2:5000`
 
 Mosquitto is going to be installed on Raspberry Pi 3
 
-1. Install docker if not already installed
-
-
+1. Install docker if not already installed  
     [Difference between up, run and start](https://docs.docker.com/compose/faq/#whats-the-difference-between-up-run-and-start)
 
     Typically, you want docker-compose up. Use up to start or restart all the services defined in a docker-compose.yml. In the default “attached” mode, you see all the logs from all the containers. In “detached” mode (-d), Compose exits after starting the containers, but the containers continue to run in the background.
