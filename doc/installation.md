@@ -54,8 +54,8 @@ svetlint/management-tool`
 -e ARROWHEAD_GK_URL=localhost:8348 \
 svetlint/management-tool
 `
-
-After installation docker conteinter can be run with command:
+![Post installation/build](img/management-tool-post-install.png "Profilbild")
+After installation docker container can be run with the command:
 `docker start management-tool`
 
 Web interface on host is available as: `http://172.17.0.2:5000`
