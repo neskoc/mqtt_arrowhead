@@ -16,7 +16,7 @@ wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/p
 ```
 
 Passwords chosen in the next/installatoins step are stored in `/var/cache/debconf/passwords.dat`
-so if you forget ony you can find them there.
+so if you forget any you can find them there.
 My recommendation is to use same the password everywhere in development environemnt or at least as long you are not comfortable with the system.
 That will probalby save you some pulled or/and gray hair.
 
@@ -50,7 +50,7 @@ This time I'll be using same password for every part of the system (and make it 
 
 ## certificates
 
-Ignore [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) about installing test certificate in browser because that certificate is already expired.
+Ignore [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) about importing test certificate in browser because that certificate is already expired.
 
 After installing AH local cloude you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
