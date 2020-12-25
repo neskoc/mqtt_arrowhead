@@ -125,7 +125,7 @@ svetlint/management-tool
 After installing/building something similar to this will be shown:
 ![Post installation/build](img/management-tool-post-install.png "Managemnt tool")
 
-After installation docker container can be run with the command:
+After installation docker container can be started with this command:  
 `docker start management-tool`
 
 Web interface on host is available as: `http://172.17.0.2:5000`  
