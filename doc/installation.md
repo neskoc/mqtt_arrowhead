@@ -240,6 +240,25 @@ After installation docker container can be started with this command:
 Web interface on host is available as: `http://172.17.0.2:5000`  
 ![Mamagement-tool web interface](img/management-tool-web-interface.png "Mamagement-tool web interface")
 
+## ActiveMQ
+
+Arrowhead Gatekeeper and Arrowhead Gateway are two optional core systems that allow consumers in the local cloud to use providers from other clouds. Because local clouds often can't be accessed from outside, the gatekeeper and gateway systems use a third party software (ActiveMQ) as relay to make connection between clouds.
+
+ActiveMQ supports the MQTT protocol and will automatically map between JMS/NMS and MQTT clients. MQTT is a machine-to-machine (M2M) publish/subscribe messaging transport.
+
+### ActiveMQ: Installation
+
+```bash
+cd /tmp/
+# assuming 5.16.0 is the latest ActiveMQ version
+wget http://archive.apache.org/dist/activemq/5.16.0/apache-activemq-5.16.0-bin.tar.gz
+tar xvzf /tmp/apache-activemq*.tar.gz -C /tmp
+sudo mv /tmp/apache-activemq* /opt/
+sudo chown -R root:root /opt/apache-activemq*
+```
+
+
+
 ## Eclipse-Mosquitto
 
 ### Install and Configure
