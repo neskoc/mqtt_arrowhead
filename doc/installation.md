@@ -1,10 +1,44 @@
 # Installation and configuration
 
+## AH local cloud
+
+```bash
+# download all files
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-core-common_4.1.3.deb
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-authorization_4.1.3.deb
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-choreographer_4.1.3.deb
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-eventhandler_4.1.3.deb
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-gatekeeper_4.1.3.deb
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-gateway_4.1.3.deb
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-orchestrator_4.1.3.deb
+wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-serviceregistry_4.1.3.deb
+```
+
+Passwords chosen in the next/installatoins step are stored in `/var/cache/debconf/passwords.dat`
+so if you forget ony you can find them there.
+My recommendation is to use same the password everywhere in development environemnt or at least as long you are not comfortable with the system.
+That will probalby save you some pulled or/and gray hair.
+
+```bash
+# assuming that files are downloaded in ~/Downloads
+sudo apt install ~/Downloads/arrowhead-*.deb
+
+
+```
+
+
+
 ## certificates
+
+Ignore [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) about installing test certificate in browser because that certificate is already expired.
 
 After installing AH local cloude you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
-
+# TODO: Find out how passwords are generated!
+# I can't find the way to unlock it nor any other certificate generated during the cloud installation
+# I've tried both the default password __123456__,
+# the password I could find in .properties files (that password is called core-common during the installation) and
+# all the other passwords I've chosen during the installation (from now on I'll use the same password everywhere to make troubleshooting easier)
 
 ## Docker
 
