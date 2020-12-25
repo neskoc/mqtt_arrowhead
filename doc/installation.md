@@ -48,11 +48,11 @@ If you by any reason need to remove/reinstall AH cloud use the following command
 I've so far done reinstallation 2 times and I'm just preparing myself for the third one.  
 This time I'll be using same password for every part of the system (and make it simple for troubleshooting).
 
-## certificates
+## Certificates
 
 Ignore [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) about importing test certificate in browser because that certificate is already expired.
 
-After installing AH local cloude you can find __master.p12__-file at:  
+After installing AH local cloud you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
 
 ## TODO: Find out how passwords are generated!
@@ -94,7 +94,14 @@ sudo curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/com
 - bash completion
     `sudo curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose`
 
-## [Arrowhead Managemnt Tools](https://github.com/arrowhead-tools/mgmt-tool-js)
+## [Arrowhead Managemnt Tool](https://github.com/arrowhead-tools/mgmt-tool-js)
+
+This tool is providing a user interface to manage Arrowhead core systems. Currently the following core systems are supported:
+1. ServiceRegistry (SQL version)
+2. Authorization System (both intra- and inter-cloud authorization schemas)
+3. Orchestration Store
+4. Gatekeeper and Gateway settings
+5. Event Handler
 
 __Installation as docker image__
 
