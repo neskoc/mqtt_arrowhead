@@ -20,7 +20,7 @@ so if you forget any you can find them there.
 My recommendation is to use same the password everywhere in development environemnt or at least as long you are not comfortable with the system.
 That will probalby save you some pulled or/and gray hair.
 
-The other thing which is not clear is that you probalby will have to choose 
+The other thing which is not clear is that you probalby will have to choose
 
 According to the instruction it is mandatory to currently use the following naming convention __my_cloud__.__my_company__.arrowhead.eu
 
@@ -48,6 +48,108 @@ If you by any reason need to remove/reinstall AH cloud use the following command
 I've so far done reinstallation 2 times and I'm just preparing myself for the third one.  
 This time I'll be using same password for every part of the system (and make it simple for troubleshooting).
 
+### Location of the system settings
+
+After installation all important system settings for the installation are stored in __application.properties__-files.
+Those settings can be found here:
+```
+/etc/arrowhead/systems/authorization/application.properties
+/etc/arrowhead/systems/choreographer/application.properties
+/etc/arrowhead/systems/event_handler/application.properties
+/etc/arrowhead/systems/gatekeeper/application.properties
+/etc/arrowhead/systems/gateway/application.properties
+/etc/arrowhead/systems/orchestrator/application.properties
+/etc/arrowhead/systems/service_registry/application.properties
+
+# the following "files" are just symbolic links to the files above
+/usr/share/arrowhead/authorization/application.properties
+/usr/share/arrowhead/choreographer/application.properties
+/usr/share/arrowhead/event_handler/application.properties
+/usr/share/arrowhead/gatekeeper/application.properties
+/usr/share/arrowhead/gateway/application.properties
+/usr/share/arrowhead/orchestrator/application.properties
+/usr/share/arrowhead/service_registry/application.properties
+```
+
+Example file: __service_registry/application.properties__  
+```properties
+############################################
+###       APPLICATION PARAMETERS         ###
+############################################
+
+# Database connection (mandatory)
+# Change the server timezone if neccessary
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/arrowhead?serverTimezone=Europe/Budapest
+spring.datasource.username=service_registry
+spring.datasource.password=<mariadb/mysqldb password>
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
+# use true only for debugging
+spring.jpa.show-sql=false  
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.hibernate.ddl-auto=none
+
+# Service Registry web-server parameters
+server.address=0.0.0.0
+server.port=8443
+domain.name=192.168.1.80 # this is my hosts IP-address on local network
+domain.port=8443
+
+############################################
+###       CUSTOM PARAMETERS              ###
+############################################
+
+# Name of the core system
+core_system_name=SERVICE_REGISTRY
+
+# Show all request/response in debug log
+log_all_request_and_response=false
+
+# Service Registry has an optional feature to ping service providers in a fixed time interval,
+# and remove service offerings where the service provider was not available
+# use this feature (true/false)
+ping_scheduled=false
+# how much time the Service Registry should wait for the ping response (in milliseconds)
+ping_timeout=5000
+# how frequently should the ping happen, in minutes
+ping_interval=60
+
+# Service Registry has an optional feature to automatically remove service offerings, where the endOfValidity
+# timestamp field is in the past, meaning the offering expired
+# use this feature (true/false)
+ttl_scheduled=false
+# how frequently the database should be checked for expired services, in minutes
+ttl_interval=10
+
+# Interface names has to follow this format <PROTOCOL>-<SECURITY>-<FORMAT>, where security can be SECURE or INSECURE and protocol and format must be a sequence of letters, numbers and underscore.
+# A regexp checker will verify that. If this setting is set to true then the PROTOCOL and FORMAT must come from a predefined set.
+use_strict_service_intf_name_verifier=false
+
+############################################
+###           SECURE MODE                ###
+############################################
+
+# configure secure mode
+
+# Set this to false to disable https mode
+server.ssl.enabled=true
+
+server.ssl.key-store-type=PKCS12
+server.ssl.key-store=file:/etc/arrowhead/systems/service_registry/service_registry.p12
+server.ssl.key-store-password=<chosen core-common password>
+server.ssl.key-alias=service_registry
+server.ssl.key-password=<chosen core-common password>
+server.ssl.client-auth=need
+server.ssl.trust-store-type=PKCS12
+server.ssl.trust-store=file:/etc/arrowhead/truststore.p12
+server.ssl.trust-store-password=<chosen core-common password>
+
+#If true, http client does not check whether the hostname is match one of the server's SAN in its certificate
+#Just for testing, DO NOT USE this feature in production environment
+disable.hostname.verifier=false
+```
+
 ## Certificates
 
 Ignore [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) about importing test certificate in browser because that certificate is already expired.
@@ -58,7 +160,7 @@ After installing AH local cloud you can find __master.p12__-file at:
 ## TODO: Find out how passwords are generated!
 I can't find the way to unlock it nor any other certificate generated during the cloud installation.  
 I've tried both the default password __123456__,
-the password I could find in .properties files (that password is called core-common during the installation) and
+the password I could find in .properties files (that password is called __core-common__ during the installation) and
 all the other passwords I've chosen during the installation (from now on I'll use the same password everywhere to make troubleshooting easier)
 
 I've also used [scripts](https://github.com/eclipse-arrowhead/core-java-spring/tree/master/scripts/certificate_generation) to generate all certificates which are by default seved in ``
