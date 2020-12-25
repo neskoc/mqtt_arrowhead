@@ -160,13 +160,7 @@ Ignore [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/
 After installing AH local cloud you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
 
-## TODO: Find out how passwords are generated!
-I can't find the way to unlock it nor any other certificate generated during the cloud installation.  
-I've tried both the default password __123456__,
-the password I could find in .properties files (that password is called __core-common__ during the installation) and
-all the other passwords I've chosen during the installation (from now on I'll use the same password everywhere to make troubleshooting easier)
-
-I've also used [scripts](https://github.com/eclipse-arrowhead/core-java-spring/tree/master/scripts/certificate_generation) to generate all certificates which are by default seved in ``
+I've also used [scripts](https://github.com/eclipse-arrowhead/core-java-spring/tree/master/scripts/certificate_generation) to generate all certificates which are by default saved in the folder __..\__ = on level up.
 
 ## Docker
 
@@ -217,7 +211,7 @@ First pull the image from registry
 
 example:
 ```bash
-docker run -it -p 3000:5000 \
+sudo docker run -it -p 3000:5000 \
 --name management-tool \
 -e ARROWHEAD_SR_URL=http://arrowhead.tmit.bme.hu:8342 \
 -e ARROWHEAD_ORCH_URL=http://arrowhead.tmit.bme.hu:8340 \
@@ -226,7 +220,7 @@ svetlint/management-tool
 ```
 ... or on local host:  
 ```bash
-docker run -it -p 3000:5000 \
+sudo docker run -it -p 3000:5000 \
 --name management-tool \
 -e ARROWHEAD_SR_URL=localhost:8342 \
 -e ARROWHEAD_ORCH_URL=localhost:8340 \
@@ -238,7 +232,7 @@ After installing/building something similar to this will be shown:
 ![Post installation/build](img/management-tool-post-install.png "Managemnt tool")
 
 After installation docker container can be started with this command:  
-`docker start management-tool`
+`sudo docker start management-tool`
 
 Web interface on host is available as: `http://172.17.0.2:5000`  
 ![Mamagement-tool web interface](img/management-tool-web-interface.png "Mamagement-tool web interface")
