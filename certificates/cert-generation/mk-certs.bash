@@ -15,12 +15,12 @@ create_root_keystore \
 
 create_cloud_keystore \
   "cloud-root/crypto/root.p12" "arrowhead.eu" \
-  "cloud-relay/crypto/conet-demo-relay.p12" "conet-demo-relay.ltu.arrowhead.eu"
+  "cloud-relay/crypto/mqtt_cloud-relay.p12" "mqtt_cloud-relay.ltu.arrowhead.eu"
 
 create_system_keystore \
   "cloud-root/crypto/root.p12" "arrowhead.eu" \
-  "cloud-relay/crypto/conet-demo-relay.p12" "conet-demo-relay.ltu.arrowhead.eu" \
-  "cloud-relay/crypto/alpha.p12" "alpha.conet-demo-relay.ltu.arrowhead.eu" \
+  "cloud-relay/crypto/mqtt_cloud-relay.p12" "mqtt_cloud-relay.ltu.arrowhead.eu" \
+  "cloud-relay/crypto/alpha.p12" "alpha.mqtt_cloud-relay.ltu.arrowhead.eu" \
   "dns:alpha.relay,ip:172.23.1.11,dns:localhost,ip:127.0.0.1"
 
 create_truststore \
@@ -31,15 +31,15 @@ create_truststore \
 
 create_cloud_keystore \
   "cloud-root/crypto/root.p12" "arrowhead.eu" \
-  "cloud-data-consumer/crypto/conet-demo-consumer.p12" "conet-demo-consumer.ltu.arrowhead.eu"
+  "cloud-data-consumer/crypto/mqtt_cloud-consumer.p12" "mqtt_cloud-consumer.ltu.arrowhead.eu"
 
 create_consumer_system_keystore() {
   SYSTEM_NAME=$1
 
   create_system_keystore \
     "cloud-root/crypto/root.p12" "arrowhead.eu" \
-    "cloud-data-consumer/crypto/conet-demo-consumer.p12" "conet-demo-consumer.ltu.arrowhead.eu" \
-    "cloud-data-consumer/crypto/${SYSTEM_NAME}.p12" "${SYSTEM_NAME}.conet-demo-consumer.ltu.arrowhead.eu" \
+    "cloud-data-consumer/crypto/mqtt_cloud-consumer.p12" "mqtt_cloud-consumer.ltu.arrowhead.eu" \
+    "cloud-data-consumer/crypto/${SYSTEM_NAME}.p12" "${SYSTEM_NAME}.mqtt_cloud-consumer.ltu.arrowhead.eu" \
     "dns:core.consumer,ip:172.23.2.13,dns:localhost,ip:127.0.0.1"
 }
 
@@ -54,27 +54,27 @@ create_consumer_system_keystore "service_registry"
 
 create_sysop_keystore \
   "cloud-root/crypto/root.p12" "arrowhead.eu" \
-  "cloud-data-consumer/crypto/conet-demo-consumer.p12" "conet-demo-consumer.ltu.arrowhead.eu" \
-  "cloud-data-consumer/crypto/sysop.p12" "sysop.conet-demo-consumer.ltu.arrowhead.eu"
+  "cloud-data-consumer/crypto/mqtt_cloud-consumer.p12" "mqtt_cloud-consumer.ltu.arrowhead.eu" \
+  "cloud-data-consumer/crypto/sysop.p12" "sysop.mqtt_cloud-consumer.ltu.arrowhead.eu"
 
 create_truststore \
   "cloud-data-consumer/crypto/truststore.p12" \
-  "cloud-data-consumer/crypto/conet-demo-consumer.crt" "conet-demo-consumer.ltu.arrowhead.eu" \
-  "cloud-relay/crypto/conet-demo-relay.crt" "conet-demo-relay.ltu.arrowhead.eu"
+  "cloud-data-consumer/crypto/mqtt_cloud-consumer.crt" "mqtt_cloud-consumer.ltu.arrowhead.eu" \
+  "cloud-relay/crypto/mqtt_cloud-relay.crt" "mqtt_cloud-relay.ltu.arrowhead.eu"
 
 # PRODUCER CLOUD
 
 create_cloud_keystore \
   "cloud-root/crypto/root.p12" "arrowhead.eu" \
-  "cloud-data-producer/crypto/conet-demo-producer.p12" "conet-demo-producer.ltu.arrowhead.eu"
+  "cloud-data-producer/crypto/mqtt_cloud-producer.p12" "mqtt_cloud-producer.ltu.arrowhead.eu"
 
 create_producer_system_keystore() {
   SYSTEM_NAME=$1
 
   create_system_keystore \
     "cloud-root/crypto/root.p12" "arrowhead.eu" \
-    "cloud-data-producer/crypto/conet-demo-producer.p12" "conet-demo-producer.ltu.arrowhead.eu" \
-    "cloud-data-producer/crypto/${SYSTEM_NAME}.p12" "${SYSTEM_NAME}.conet-demo-producer.ltu.arrowhead.eu" \
+    "cloud-data-producer/crypto/mqtt_cloud-producer.p12" "mqtt_cloud-producer.ltu.arrowhead.eu" \
+    "cloud-data-producer/crypto/${SYSTEM_NAME}.p12" "${SYSTEM_NAME}.mqtt_cloud-producer.ltu.arrowhead.eu" \
     "dns:core.producer,ip:172.23.3.13,dns:localhost,ip:127.0.0.1"
 }
 
@@ -89,10 +89,10 @@ create_producer_system_keystore "service_registry"
 
 create_sysop_keystore \
   "cloud-root/crypto/root.p12" "arrowhead.eu" \
-  "cloud-data-producer/crypto/conet-demo-producer.p12" "conet-demo-producer.ltu.arrowhead.eu" \
-  "cloud-data-producer/crypto/sysop.p12" "sysop.conet-demo-producer.ltu.arrowhead.eu"
+  "cloud-data-producer/crypto/mqtt_cloud-producer.p12" "mqtt_cloud-producer.ltu.arrowhead.eu" \
+  "cloud-data-producer/crypto/sysop.p12" "sysop.mqtt_cloud-producer.ltu.arrowhead.eu"
 
 create_truststore \
   "cloud-data-producer/crypto/truststore.p12" \
-  "cloud-data-producer/crypto/conet-demo-producer.crt" "conet-demo-producer.ltu.arrowhead.eu" \
-  "cloud-relay/crypto/conet-demo-relay.crt" "conet-demo-relay.ltu.arrowhead.eu"
+  "cloud-data-producer/crypto/mqtt_cloud-producer.crt" "mqtt_cloud-producer.ltu.arrowhead.eu" \
+  "cloud-relay/crypto/mqtt_cloud-relay.crt" "mqtt_cloud-relay.ltu.arrowhead.eu"

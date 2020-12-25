@@ -253,6 +253,7 @@ cd /tmp/
 # assuming 5.16.0 is the latest ActiveMQ version
 wget http://archive.apache.org/dist/activemq/5.16.0/apache-activemq-5.16.0-bin.tar.gz
 tar xvzf /tmp/apache-activemq*.tar.gz -C /tmp
+rm /opt/apache-activemq-5.16.0-bin.tar.gz
 sudo mv /tmp/apache-activemq* /opt/
 sudo chown -R root:root /opt/apache-activemq*
 ```
