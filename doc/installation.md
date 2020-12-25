@@ -2,6 +2,7 @@
 
 ## AH local cloud
 
+1. Download all necessary files if you don want to pull whole repository
 ```bash
 # download all files
 wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-core-common_4.1.3.deb
@@ -19,14 +20,31 @@ so if you forget ony you can find them there.
 My recommendation is to use same the password everywhere in development environemnt or at least as long you are not comfortable with the system.
 That will probalby save you some pulled or/and gray hair.
 
+The other thing which is not clear is that you probalby will have to choose 
+
+According to the instruction it is mandatory to currently use the following naming convention __my_cloud__.__my_company__.arrowhead.eu
+
+When I looked on the ssl-certificate in my webbrowser I could see this certificate chain:
+
+1. __arrowhead.eu__  
+2. __mqtt_cloud.nesko.arrowhead.eu__  
+3. __service_registry.mqtt_cloud.nesko.arrowhead.eu__
+
+where __nesko__ is my alias and __mqtt_cloud__ is the name I've chosen for my local cloud.
+I'm not realy sure what was the question where I answered with "nesko".
+
+
 ```bash
 # assuming that files are downloaded in ~/Downloads
 sudo apt install ~/Downloads/arrowhead-*.deb
 
-
 ```
 
+### Removing AH cloud
 
+If you by any reason need to remove/reinstall AH cloud use the following comman `sudo apt install ~/Downloads/arrowhead-*.deb`
+I've so far done reinstall 2 times and I'm just preparing myself for the third one.
+This time I'll be using same password for every part of the system (and make it simple for troubleshooting).
 
 ## certificates
 
@@ -39,6 +57,8 @@ After installing AH local cloude you can find __master.p12__-file at:
 # I've tried both the default password __123456__,
 # the password I could find in .properties files (that password is called core-common during the installation) and
 # all the other passwords I've chosen during the installation (from now on I'll use the same password everywhere to make troubleshooting easier)
+
+I've also used [scripts](https://github.com/eclipse-arrowhead/core-java-spring/tree/master/scripts/certificate_generation) to generate all certificates which are by default seved in ``
 
 ## Docker
 
