@@ -17,10 +17,12 @@ wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/p
 
 Passwords chosen in the next/installation step are stored in `/var/cache/debconf/passwords.dat`
 so if you forget any you can find them there.
-My recommendation is to use same the password everywhere in development environemnt or at least as long you are not comfortable with the system.
-That will probalby save you some pulled or/and gray hair.
+My recommendation is to use same the password everywhere in development environment or at least as long you are not comfortable with the system.
+That will probably save you some pulled or/and gray hair.
 
-The other thing which is not clear is that you probalby will have to choose
+__Edit 1:__ This caused me a lot of problems. I was trying to unlock certificate-files under the /etc/arrowhead folders that are own by root running KeyStore Explorer as ordinary user. That was really frustrating and I've spent a lot of times troubleshooting it.
+So most of the password troubles mentioned above have file-permission origin.
+Either runt KeyStore Explorer as root or copy certificate you need to work with and change permissions.
 
 According to the instruction it is mandatory to currently use the following naming convention __my_cloud__.__my_company__.arrowhead.eu
 
@@ -31,8 +33,9 @@ When I looked on the ssl-certificate in my webbrowser I could see this certifica
 3. __service_registry.mqtt_cloud.nesko.arrowhead.eu__
 
 where __nesko__ is my alias and __mqtt_cloud__ is the name I've chosen for my local cloud.
-I'm not realy sure what was the question where I answered with "nesko".
-
+I'm not really sure what was the question where I answered with "nesko".
+Edit: After re-installation I figured out that the question is that you either should enter your name or organization.
+In new installation I've chosen ltu (Luleå Tekniska Universitet) to have it more consistent.
 
 ```bash
 # assuming that files are downloaded in ~/Downloads
@@ -43,9 +46,9 @@ sudo apt install ~/Downloads/arrowhead-*.deb
 ### Removing AH cloud
 
 If you by any reason need to remove/reinstall AH cloud use the following command  
-`sudo apt install ~/Downloads/arrowhead-*.deb`
+`sudo apt purge arrowhead-core-common`
 
-I've so far done reinstallation 2 times and I'm just preparing myself for the third one.  
+I've so far done reinstallation 2 times and I'm just doing it for the third time.  
 This time I'll be using same password for every part of the system (and make it simple for troubleshooting).
 
 ### Location of the system settings
