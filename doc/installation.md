@@ -54,7 +54,7 @@ After installing AH local cloude you can find __master.p12__-file at:
 `/etc/arrowhead/master.p12`
 
 ## TODO: Find out how passwords are generated!
-I can't find the way to unlock it nor any other certificate generated during the cloud installation
+I can't find the way to unlock it nor any other certificate generated during the cloud installation.  
 I've tried both the default password __123456__,
 the password I could find in .properties files (that password is called core-common during the installation) and
 all the other passwords I've chosen during the installation (from now on I'll use the same password everywhere to make troubleshooting easier)
