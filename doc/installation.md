@@ -42,8 +42,10 @@ sudo apt install ~/Downloads/arrowhead-*.deb
 
 ### Removing AH cloud
 
-If you by any reason need to remove/reinstall AH cloud use the following comman `sudo apt install ~/Downloads/arrowhead-*.deb`
-I've so far done reinstall 2 times and I'm just preparing myself for the third one.
+If you by any reason need to remove/reinstall AH cloud use the following command  
+`sudo apt install ~/Downloads/arrowhead-*.deb`
+
+I've so far done reinstallation 2 times and I'm just preparing myself for the third one.  
 This time I'll be using same password for every part of the system (and make it simple for troubleshooting).
 
 ## certificates
