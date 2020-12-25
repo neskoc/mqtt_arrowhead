@@ -15,7 +15,7 @@ wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/p
 wget -c  https://github.com/arrowhead-f/core-java-spring-installers/raw/master/packages/arrowhead-serviceregistry_4.1.3.deb
 ```
 
-Passwords chosen in the next/installatoins step are stored in `/var/cache/debconf/passwords.dat`
+Passwords chosen in the next/installation step are stored in `/var/cache/debconf/passwords.dat`
 so if you forget any you can find them there.
 My recommendation is to use same the password everywhere in development environemnt or at least as long you are not comfortable with the system.
 That will probalby save you some pulled or/and gray hair.
