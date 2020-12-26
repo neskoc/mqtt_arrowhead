@@ -162,7 +162,7 @@ disable.hostname.verifier=false
 After installing AH local cloud you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
 
-I've also used [scripts](https://github.com/eclipse-arrowhead/core-java-spring/tree/master/scripts/certificate_generation) to generate all certificates which are by default saved in the folder __..\__ = on level up.
+I've also used [scripts](https://github.com/eclipse-arrowhead/core-java-spring/tree/master/scripts/certificate_generation) to generate all certificates which are by default saved in the folder __..\\__ i.e. one level up.
 
 ## Docker
 
