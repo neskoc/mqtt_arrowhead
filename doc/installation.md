@@ -216,7 +216,7 @@ You usually use json format for Swagger.
 I haven't worked with either yet but Management Tool has an "field based" interface where you choose what you want to do and fill in the form.
 You'll soon see what I mean.
 
-### Managemnt Tool
+### Management Tool
 
 This tool is providing a user interface to manage Arrowhead core systems. Currently the following core systems are supported:
 1. ServiceRegistry (SQL version)
