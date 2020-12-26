@@ -1,5 +1,7 @@
 # Installation and configuration
 
+I have been using the [instruction for debian installation](https://github.com/arrowhead-f/core-java-spring-installers/blob/master/DEBIAN-INSTALL.md) and I'll skip few parts like installing java (read the original).
+
 ## AH local cloud
 
 1. Download all necessary files if you don want to pull whole repository
@@ -50,6 +52,19 @@ If you by any reason need to remove/reinstall AH cloud use the following command
 
 I've so far done reinstallation 2 times and I'm just doing it for the third time.  
 This time I'll be using same password for every part of the system (and make it simple for troubleshooting).
+
+### Generating client certificates
+
+AH core system is installing a couple of scripts for generating client and relay certificates.
+
+I am going to have one provider and one consumer so I have generated 2 certificates:  
+```bash
+# provider
+sudo ah_gen_system_cert.sh provider 123456
+
+#consumer
+sudo ah_gen_system_cert.sh consumer 123456
+```
 
 ### Location of the system settings
 
@@ -153,11 +168,13 @@ server.ssl.trust-store-password=<chosen core-common password>
 disable.hostname.verifier=false
 ```
 
-## Certificates
+## Certificates (not about client certificates)
 
- > __Attention!__ All certificates stored under /etc/arrowhead are owned by the __root__.
+ > __Attention!__ All automatically generated certificates during installation are stored under /etc/arrowhead are owned by the __root__.
  To be able to access them you need to copy them somewhere else and make yourself owner.
  So if you need to importing the sysop certificate in your browser as described in [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) you'll have to take above into consideration.
+
+Please read first the section about client certificates generations under the installation.
 
 After installing AH local cloud you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
