@@ -195,6 +195,29 @@ sudo curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/com
 
 ## [Arrowhead Managemnt Tool](https://github.com/arrowhead-tools/mgmt-tool-js)
 
+### Swagger
+
+You've probably already heard about famous Swagger
+and if you even wandered, as I did, what the hack Swagger is and how does it look like I'll do you a favor and post a few screen shoots here:
+
+![Swagger](img/swagger.png)
+__Main page__
+
+![Client GET](img/swagger-client.png)
+__Client GET__
+
+![Client POST](img/swagger-client-post.png)
+__Client POST execute command__
+
+No, it wasn't really what you expected isn't it :)
+So you can do pretty much everything with the Swagger interface.
+You don't actually need Management Tool.
+You usually use json format for Swagger.
+I haven't worked with either yet but Management Tool has an "field based" interface where you choose what you want to do and fill in the form.
+You'll soon see what I mean.
+
+### Managemnt Tool
+
 This tool is providing a user interface to manage Arrowhead core systems. Currently the following core systems are supported:
 1. ServiceRegistry (SQL version)
 2. Authorization System (both intra- and inter-cloud authorization schemas)
@@ -236,6 +259,14 @@ After installation docker container can be started with this command:
 
 Web interface on host is available as: `http://172.17.0.2:5000`  
 ![Mamagement-tool web interface](img/management-tool-web-interface.png "Mamagement-tool web interface")
+__Start page__
+
+Do you remember what I said about filling the form?
+This is what I mean by that:
+![Add new Service](img/management-tool-add.png "Managemnt tool")
+__Add service form__
+
+So you can use either Swagger or Management Tool and both have its advantages and disadvantages.
 
 ## [ActiveMQ](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/gatekeeper/GatekeeperSetup.md)
 
@@ -254,8 +285,6 @@ rm /opt/apache-activemq-5.16.0-bin.tar.gz
 sudo mv /tmp/apache-activemq* /opt/
 sudo chown -R root:root /opt/apache-activemq*
 ```
-
-
 
 ## Eclipse-Mosquitto
 
