@@ -67,6 +67,25 @@ sudo ah_gen_system_cert.sh provider 123456
 sudo ah_gen_system_cert.sh consumer 123456
 ```
 
+### Generating relay master certificate
+
+I'm not sure whether my understanding of the process is corret and I'll come back and correct it if I discover that I made some mistake.  
+So ...
+
+I'll be using automatically generated `master.p12` certificate found in /etc/arrowhead
+
+```bash
+sudo cp /etc/arrowhead/master.p12 .
+sudo chown <your username> master.p12
+```
+
+Now you need to follow two guides for generating `relay-master.p12` and `truststore.p12`.
+1. Generate relay-master.p12 using this [guide](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/create_cloud_certificate.pdf). Use master.p12 copied above and in the fith step for common name (CN) choose: `relay.arrowhead.eu`
+2. Generate truststore following [this procedure](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/create_trust_store.pdf)
+
+We are going to generate one client certificate for ActiveMQ now but it will be used later for configuring AtiveMQ as MQTT-relay.  
+`sudo ah_gen_relay_cert.sh active-mq 123456 relay-master.p12 123456`
+
 ### Location of the system settings
 
 After installation all important system settings for the installation are stored in __application.properties__-files.
@@ -313,6 +332,9 @@ rm /opt/apache-activemq-5.16.0-bin.tar.gz
 sudo mv /tmp/apache-activemq* /opt/
 sudo chown -R root:root /opt/apache-activemq*
 ```
+We are going to use the certificates generated under the chapter __Generating relay master certificate__ (read it now if you didn't already).
+
+
 
 ## Eclipse-Mosquitto
 
