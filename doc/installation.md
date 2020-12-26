@@ -155,7 +155,9 @@ disable.hostname.verifier=false
 
 ## Certificates
 
-Ignore [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) about importing test certificate in browser because that certificate is already expired.
+ > __Attention!__ All certificates stored under /etc/arrowhead are owned by the __root__.
+ To be able to access them you need to copy them somewhere else and make yourself owner.
+ So if you need to importing the sysop certificate in your browser as described in [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) you'll have to take above into consideration.
 
 After installing AH local cloud you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
