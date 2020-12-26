@@ -57,7 +57,7 @@ This time I'll be using same password for every part of the system (and make it 
 
 AH core system is installing a couple of scripts for generating client and relay certificates.
 
-I am going to have one provider and one consumer so I have generated 2 certificates:  
+The one we are going to use is `ah_gen_system_cert`. We are going to have one provider and one consumer so we will generate 2 certificates:  
 ```bash
 # provider
 sudo ah_gen_system_cert.sh provider 123456
@@ -174,7 +174,7 @@ disable.hostname.verifier=false
  To be able to access them you need to copy them somewhere else and make yourself owner.
  So if you need to importing the sysop certificate in your browser as described in [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) you'll have to take above into consideration.
 
-Please read first the section about client certificates generations under the installation.
+Please read first the section about client certificates generations which can be found under the installation section above.
 
 After installing AH local cloud you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
