@@ -22,7 +22,7 @@ so if you forget any you can find them there.
 My recommendation is to use same the password everywhere in development environment or at least as long you are not comfortable with the system.
 That will probably save you some pulled or/and gray hair.
 
-__Edit 1:__ This caused me a lot of problems. I was trying to unlock certificate-files under the /etc/arrowhead folders that are own by root running KeyStore Explorer as ordinary user. That was really frustrating and I've spent a lot of times troubleshooting it.
+ > __Edit 1:__ This caused me a lot of problems. I was trying to unlock certificate-files under the /etc/arrowhead folders that are own by root running KeyStore Explorer as ordinary user. That was really frustrating and I've spent a lot of times troubleshooting it.
 So most of the password troubles mentioned above have file-permission origin.
 Either runt KeyStore Explorer as root or copy certificate you need to work with and change permissions.
 
@@ -36,7 +36,8 @@ When I looked on the ssl-certificate in my webbrowser I could see this certifica
 
 where __nesko__ is my alias and __mqtt_cloud__ is the name I've chosen for my local cloud.
 I'm not really sure what was the question where I answered with "nesko".
-Edit: After re-installation I figured out that the question is that you either should enter your name or organization.
+
+ > __Edit 2:__ After re-installation I figured out that the question is that you either should enter your name or organization.
 In new installation I've chosen ltu (Luleå Tekniska Universitet) to have it more consistent.
 
 ```bash
@@ -174,7 +175,7 @@ disable.hostname.verifier=false
  To be able to access them you need to copy them somewhere else and make yourself owner.
  So if you need to importing the sysop certificate in your browser as described in [instruction](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/import_sysop_certificate_linux.pdf) you'll have to take above into consideration.
 
-Please read first the section about client certificates generations which can be found under the installation section above.
+ > Please read first the section about client certificates generations which can be found under the installation section above.
 
 After installing AH local cloud you can find __master.p12__-file at:  
 `/etc/arrowhead/master.p12`
