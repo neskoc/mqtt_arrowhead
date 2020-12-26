@@ -243,15 +243,16 @@ sudo docker run -it -p 3000:5000 \
 -e ARROWHEAD_GK_URL=http://arrowhead.tmit.bme.hu:8348 \
 svetlint/management-tool
 ```
-... or on local host:  
+... or on local host:
 ```bash
 sudo docker run -it -p 3000:5000 \
 --name management-tool \
--e ARROWHEAD_SR_URL=localhost:8342 \
--e ARROWHEAD_ORCH_URL=localhost:8340 \
--e ARROWHEAD_GK_URL=localhost:8348 \
+-e ARROWHEAD_SR_URL=https://localhost:8342 \
+-e ARROWHEAD_ORCH_URL=https://localhost:8340 \
+-e ARROWHEAD_GK_URL=https://localhost:8348 \
 svetlint/management-tool
 ```
+ > __Attention!__ You will have to use https protocol if encryption is enabled (which is recommended and default value). In the [example](https://github.com/arrowhead-tools/mgmt-tool-js/blob/master/README.md) http is used which shoud absolutely changed to https (it took me many hours until I realized why MT behaved strangely)
 
 After installing/building something similar to this will be shown:
 ![Post installation/build](img/management-tool-post-install.png "Managemnt tool")
@@ -260,8 +261,15 @@ After installation docker container can be started with this command:
 `sudo docker start management-tool`
 
 Web interface on host is available as: `http://172.17.0.2:5000`  
-![Mamagement-tool web interface](img/management-tool-web-interface.png "Mamagement-tool web interface")
+![Post installation/build](img/mt-correct.png "Managemnt tool")
 __Start page__
+
+If you see something like this without any content from the local cloud:
+
+ ![Mamagement-tool web interface](img/management-tool-web-interface.png "Mamagement-tool web interface")
+__Start page - missing content__
+
+then something is missing like you didn't import sysop certificate (check the part about Swagger), you are using http instead of https for url's to AH local cloud, some ad-blocker in your browser are blocking the content, MT is on the same computer as local cloud (this is not confirmed cause of the problem) or there is simply bug in the Management Tool.
 
 Do you remember what I said about filling the form?
 This is what I mean by that:
