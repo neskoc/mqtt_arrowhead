@@ -149,4 +149,4 @@ desktop.ini
 
 # Private area
 private/
-
+docker/mosquitto/config/certs
