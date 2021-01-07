@@ -1,5 +1,7 @@
 # Generating self-signed certificate for Eclipse Mosquitto
 
+## Server
+
 ```bash
 openssl genrsa -des3 -out mosquitto-ca.key 2048
 
@@ -38,4 +40,20 @@ openssl x509 -req -in mqtt-server.csr -CA mosquitto-ca.crt -CAkey mosquitto-ca.k
 # subject=C = SE, ST = Stockholm, L = Stockholm, O = Server-cert, OU = umu, CN = 127.0.0.1, emailAddress = email@mail.com
 # Getting CA Private Key
 # Enter pass phrase for mosquitto-ca.key:
+```
+
+## Client
+
+```bash
+openssl genrsa -des3 -out mqtt-client.key 2048
+# Enter pass phrase for ../client/mqtt-client.key:
+# Country Name (2 letter code) [AU]:SE
+# State or Province Name (full name) [Some-State]:Stockholm
+# Locality Name (eg, city) []:Stockholm
+# Organization Name (eg, company) [Internet Widgits Pty Ltd]:Client-cert
+# Organizational Unit Name (eg, section) []:umu
+# Common Name (e.g. server FQDN or YOUR name) []:fipy
+# Email Address []:cnesko@e.email
+openssl req -out mqtt-client.csr -key mqtt-client.key -new
+openssl x509 -req -in mqtt-client.csr -CA mosquitto-ca.crt -CAkey mosquitto-ca.key -CAcreateserial -out mqtt-client.crt -days 3650
 ```
