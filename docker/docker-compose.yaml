@@ -1,15 +1,25 @@
-mosquitto:
-   image: eclipse-mosquitto
-   hostname: mosquitto
-   container_name: mosquitto
-   expose:
-     - "1883"
-     - "9001"
-   ports:
-     - "1883:1883"
-     - "9001:9001"
-   volumes:
-#     - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-     - /var/log/docker/mosquitto:/mosquitto/log
-     - ./mosquitto/data:/mosquitto/data
-     - /etc/localtime:/etc/localtime:ro
+version: '3.9'
+
+services:
+   mosquitto:
+        image: eclipse-mosquitto:latest
+        hostname: mosquitto
+        container_name: mosquitto
+        expose:
+                - "1883"
+                - "9001"
+        ports:
+                - "1883:1883"
+                - "9001:9001"
+        volumes:
+#               - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+                - ./mosquitto/config:/mosquitto/config/
+                - /var/log/docker/mosquitto:/mosquitto/log
+                - ./mosquitto/data:/mosquitto/data
+                - /etc/localtime:/etc/localtime:ro
+        networks:
+                - default
+        restart: unless-stopped
+
+networks:
+  default:
