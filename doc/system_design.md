@@ -6,21 +6,30 @@ Arrowhead (AH) local cloud (*desktop linux*) with following 4 built in roles (se
 1. Authentication
 2. Orchestrator (e.g. authorisation)
 3. Service registry
-4. IoT Edge Gateway providing interface for
+4. Management Tool 
+5. IoT Edge Gateway providing interface for
     - Service provider: python __AH-client 0__ (*Raspberry pi*)
-    - MQTT stream publisher to MQTT-broker (*Mosquitto* on  *Raspberry pi*):
-        * ~~python __AH-client 1__ as subscriber for the IoT that will be streamed to Mosquitto~~
-        * ~~python __mqtt-client 1__ publishing stream to mqtt-broker,~~
+        - Publish one service using MQTT protocol
+        - Consumes ServiceDiscovery service using the HTTP protocol.
+            - Have to register it’s published service to the ServiceRegistry via the ServiceDiscovery service.
+    - AH-client 0 pushes data to MQTT-broker (*Mosquitto* on  *Desktop linux*):
+        * python __AH-client 1__ as subscriber for the IoT that will be streamed to Mosquitto
+        * python __mqtt-client 1__ publishing stream to mqtt-broker,
         * Seems like __ActiveMQ__ supports [MQTT-protocol](http://activemq.apache.org/mqtt.html) and will automatically map between JMS/NMS and MQTT clients. So it should be possible to configure Gateway to stream directly to mqtt-broker (Mosquitto). There is no need for __mqtt-client 1__.
     - Service consumer, (*FiPy esp32 dev board*)
+        * Consumes at minimum three services
+            - Orchestration
+            - Authorisation
+            - AH-Client 0 published service
         * python __AH-client 2__ for authorisation/authentication
         * python __mqtt-client 2__ as mqtt-consumer
 
 ### Preconfiguration
 
 1. Set up AH local cloud
+    - Configure orchestration and  security using the Management tool
     - Manually register all 3 AH-clients' certificates
-    - Manually set up/configure authorisation levels and services for each clients
+    - Manually set up/configure authorization levels and services for each clients
     - Configure default streaming parameters (attributes)
 2. Manually setup mqtt-broker (Mosquitto)
     - register ~~mqtt-client 1~~ __ActiveMQ__ as stream provider ~~inclusive generated certificate 1~~. To be investigate how certificate is going to be dealt with.
