@@ -4,7 +4,7 @@
 - **\*-ca.key**-file is root key used to sign certificate request (crt) files
 - **.crt**-files are public keys (x509)
 - **.csr**-files are certify request files that are going to be signed by privite keys
-- **\*-truststore.p12**-files are used for storing all trusted sources' public keys, for instance to be able to connect to mqtt-broker that use p12-cert format like ActiveMQ you need to add you public key (crt) in the brokers trust store.
+- **\*-truststore.p12**-files are used for storing all trusted sources' public keys, for instance to be able to connect to mqtt-broker that use p12-type like ActiveMQ you need to add you public key (crt) in the brokers trust store.
 Client trying to connect needs its own public and private key as well as brokers public key.  
 For mgtt-explorer for connecting to ActiveMQ, settings are:  
 ![MQTT Explorer certificates](img/mqtt-explorer-certificates.png "MQTT Explorer certificates")  
