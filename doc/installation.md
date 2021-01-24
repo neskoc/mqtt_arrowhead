@@ -54,22 +54,9 @@ If you by any reason need to remove/reinstall AH cloud use the following command
 I've so far done reinstallation 2 times and I'm just doing it for the third time.  
 This time I'll be using same password for every part of the system (and make it simple for troubleshooting).
 
-### Generating client certificates
-
-AH core system is installing a couple of scripts for generating client and relay certificates.
-
-The one we are going to use is `ah_gen_system_cert`. We are going to have one provider and one consumer so we will generate 2 certificates:  
-```bash
-# provider
-sudo ah_gen_system_cert.sh provider 123456
-
-#consumer
-sudo ah_gen_system_cert.sh consumer 123456
-```
-
 ### Generating relay master certificate
 
-I'm not sure whether my understanding of the process is corret and I'll come back and correct it if I discover that I made some mistake.  
+I'm not sure whether my understanding of the process is correct and I'll come back and correct it if I discover that I made some mistake.  
 So ...
 
 I'll be using automatically generated `master.p12` certificate found in /etc/arrowhead
@@ -85,6 +72,38 @@ Now you need to follow two guides for generating `relay-master.p12` and `trustst
 
 We are going to generate one client certificate for ActiveMQ now but it will be used later for configuring AtiveMQ as MQTT-relay.  
 `sudo ah_gen_relay_cert.sh active-mq 123456 relay-master.p12 123456`
+
+### Generating client certificates
+
+You will need at least own certificates for provider and consumer clients.
+
+AH core system is installing a couple of scripts:  
+```bash
+/usr/bin/ah_gen_system_cert
+# and
+/usr/bin/ah_gen_relay_cert.sh
+# they are using functions from `/usr/share/arrowhead/conf/ahconf.sh`
+```
+for generating system and relay certificates and those could be probably used for quick generation of certificates but I used KeyStore Explorer because I followed the core-system guide which was referring to it. Afterwards I had no time to investigate scripts in details.
+
+For demonstration in this example I used "consumer". The procedure is similar for producer.
+1. I used `/etc/arrowhead/clouds/mqtt_cloud-producer.p12` (you could use `/etc/arrowhead/master.crt` too) for generating consumer.p12 using this [guide](https://github.com/eclipse-arrowhead/core-java-spring/blob/master/documentation/certificates/create_cloud_certificate.pdf).In the fifth step for common name (CN) fill in: consumer
+2. Use these newly generated p12-files to export pem and private key file (to simplify scripting I chose not to encrypt the private key).
+3. Export pem-file
+ ![consumer pem-file](img/kestore-explorer-pem-all.png)
+    1. Double-click on consumer
+    2. Click on "PEM"
+    3. Click on "EXPORT"
+    4. Save as .pem file
+4. Export unencrypted private key  
+ Right click on consumer and choose to export private key  
+ ![consumer pem-file](img/kestore-explorer-private-key1.png)  
+ Choose "OpenSSL"  
+ ![consumer pem-file](img/kestore-explorer-private-key2.png)  
+ Remove tick for "Encrypt", choose .key extension and klick on export
+ ![consumer pem-file](img/kestore-explorer-private-key3.png)
+
+Repeat for the provider.
 
 ### Location of the system settings
 
